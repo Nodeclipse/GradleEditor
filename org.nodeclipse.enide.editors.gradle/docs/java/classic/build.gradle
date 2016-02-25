@@ -1,0 +1,46 @@
+/*		Classic
+*	http://www.nodeclipse.org/projects/gradle
+* build.gradle drop-in template for classic Eclipse (ant) Java project
+*	https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.enide.editors.gradle/docs/java/classic/build.gradle
+* Usage
+*	1. new Java project and put this file inside
+*	2. after dependency changed, run `gradle build eclipse`
+* History
+*	2014-05-13 organize sections by plugins
+*	2014-05-20 =['src'] instead of 'src'; configure tests folder
+* @author Paul Verest
+* Refererences
+*	http://www.gradle.org/docs/current/dsl/org.gradle.plugins.ide.eclipse.model.EclipseProject.html 
+*/
+
+version = '1.0'
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+sourceSets {
+    main {
+        java.srcDirs = ['src']
+        resources.srcDirs = ['src']
+    }
+    test {
+        java.srcDirs = ['tests']
+        resources.srcDirs = ['tests']
+    }
+}
+task initSourceFolders <<{
+   sourceSets*.java.srcDirs*.each { it.mkdirs() }
+   sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+repositories {
+    mavenCentral()
+    //jcenter()
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    testCompile "junit:junit:4.11"
+}
+
+apply plugin: 'application' // this adds run task
+mainClassName = "com.example.MainClass"
+
+apply plugin: 'eclipse'

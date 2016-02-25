@@ -1,0 +1,25 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.10.+'
+    }
+}
+
+// using key Gradle features like the allprojects and subprojects keywords automatically cause your projects to be coupled. 
+/*
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+*/
+
+/*
+subprojects {
+
+}
+*/

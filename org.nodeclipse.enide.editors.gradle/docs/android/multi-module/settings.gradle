@@ -1,0 +1,4 @@
+include ':app'
+include ':module'
+
+// see also settings.gradle in `parent` folder for flat project layout

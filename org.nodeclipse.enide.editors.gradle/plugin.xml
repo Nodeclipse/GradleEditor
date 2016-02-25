@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+<!-- default="true" -->
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"            
+            extensions="gradle"
+            icon="icons/gradle-icon-16x16.png"
+            id="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
+            name="Minimalist Gradle Editor">
+      </editor>
+   </extension>
+   
+   
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.nodeclipse.enide.editors.gradle.preferences.GradleEditorPreferenceInitializer">
+      </initializer>
+  </extension>
+    <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+      		category="org.nodeclipse.enide.gradle.preferences.GradlePreferencePage"
+            class="org.nodeclipse.enide.editors.gradle.preferences.GradleEditorPreferencePage"
+            id="org.nodeclipse.enide.editors.gradle.preferences.GradleEditorPreferencePage"
+            name="Gradle Editor">
+      </page>
+   </extension>
+   
+   
+</plugin>

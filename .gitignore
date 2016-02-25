@@ -1,0 +1,11 @@
+# output folders
+target/
+bin/
+
+.metadata
+/.*.md.html
+#*.settings/
+/*.error
+
+# MacOS
+*.DS_Store

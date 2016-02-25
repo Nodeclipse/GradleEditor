@@ -1,0 +1,17 @@
+/*
+*
+*	https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.enide.editors.gradle/docs/java/build.gradle
+* http://stackoverflow.com/questions/14017364/how-to-create-java-gradle-project
+* Usage
+* 1. create folder and put this file inside
+* 2. run `gradle initSourceFolders eclipse`
+*/
+println GradleVersion.current().prettyPrint()
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+task initSourceFolders { // add << before { to prevent executing during configuration phase
+   sourceSets*.java.srcDirs*.each { it.mkdirs() }
+   sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}

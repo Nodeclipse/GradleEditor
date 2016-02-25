@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.nodeclipse.nodeclipse-1</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.2-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.nodeclipse.enide.editors.gradle</artifactId>
+	<packaging>eclipse-plugin</packaging>
+
+	<name>org.nodeclipse.enide.editors.gradle</name>
+	<description>Nodeclipse/Enide minimal Editor for build.Gradle</description>
+</project>
+

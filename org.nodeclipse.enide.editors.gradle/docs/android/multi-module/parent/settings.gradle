@@ -1,0 +1,4 @@
+includeFlat 'app'
+includeFlat 'module'
+
+// see also settings.gradle in the root folder for hierarchical project layout

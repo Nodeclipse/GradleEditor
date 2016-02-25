@@ -1,0 +1,54 @@
+/*		Basic
+*	http://www.nodeclipse.org/projects/gradle
+* Nodeclipse/Enide build.gradle template for basic Java project (with Maven standart folder layout)
+*	https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.enide.editors.gradle/docs/java/basic/build.gradle
+* Initially asked on
+*	http://stackoverflow.com/questions/14017364/how-to-create-java-gradle-project
+* Usage
+*	1. create folder (or general Eclipse project) and put this file inside
+*	2. run `gradle initSourceFolders eclipse` or `gradle initSourceFolders idea`
+* based on `gradle init --type basic`, that does not create source folders 
+* History
+*	2014-04-25 remove <<
+* @author Paul Verest; 
+*/
+println GradleVersion.current().prettyPrint()
+
+version = '1.0'
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+task initSourceFolders { // add << before { to prevent executing during configuration phase
+   sourceSets*.java.srcDirs*.each { it.mkdirs() }
+   sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use Maven Central for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    // see 50.6. Repositories http://www.gradle.org/docs/current/userguide/dependency_management.html
+    mavenCentral()
+    //jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    //compile fileTree(dir: 'libs', include: '*.jar')
+    // The production code uses the SLF4J logging API at compile time
+    //compile 'org.slf4j:slf4j-api:1.7.5'
+
+    // Declare the dependency for your favourite test framework you want to use in your tests.
+    // TestNG is also supported by the Gradle Test task. Just change the
+    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
+    // 'test.useTestNG()' to your build script.
+    testCompile "junit:junit:4.11"
+}
