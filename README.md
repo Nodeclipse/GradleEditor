@@ -5,7 +5,7 @@ Gradle Editor for Eclipse IDEs &amp; Enide Studio
 Gradleware works for Gradle tools in Eclipse within Eclipse Buildship project.
 And of course have plans for full pledged Editor 
 (see [story](https://github.com/eclipse/buildship/blob/master/docs/stories/Editor.md))
-but it is not in nearest future (please let use know via raised issue when you see it on Roadmap)
+but it is not in nearest future (please let use know via raised issue #2 when you see it on Roadmap)
 
 The goal is to give Editor that would work within any Eclipse project, 
 with or without Pivotal Gradle IDE or Eclipse Buildship integrations.
