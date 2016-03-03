@@ -11,6 +11,15 @@ The goal is to give Editor that would work within any Eclipse project,
 with or without Pivotal Gradle IDE or Eclipse Buildship integrations.
 This Editor will take no Gradle APIs or Groovy dependency and stay as light as possible.
 
+## Screenshots
+
+from <http://www.nodeclipse.org/enide/editors/gradle>
+
+![](https://marketplace.eclipse.org/sites/default/files/styles/ds_solution_screenshot/public/Minimalist_Gradle_Editor.PNG)
+
+![](http://marketplace.eclipse.org/sites/default/files/eclipse-color-theme-with-rainbowdrops.png)
+
+
 ## History
 
 This has started as Minimalist Gradle Editor within Nodeclipse-1 repository,
