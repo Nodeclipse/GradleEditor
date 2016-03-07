@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.nodeclipse.enide.editors.gradle.feature"
-      label="Minimalist Gradle Editor"
-      version="1.0.2.qualifier"
+      label="Gradle Editor"
+      version="2.0.0.qualifier"
       provider-name="Nodeclipse/Enide">
 
    <description url="http://www.nodeclipse.org/">

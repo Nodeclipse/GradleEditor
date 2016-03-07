@@ -1,0 +1,3 @@
+include ':org.nodeclipse.enide.editors.gradle'
+include ':feature/org.nodeclipse.enide.editors.gradle.feature'
+include ':org.nodeclipse.enide.site'

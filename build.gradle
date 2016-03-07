@@ -1,0 +1,438 @@
+import eclipsebuild.*
+import org.gradle.api.logging.LogLevel
+import org.gradle.internal.os.OperatingSystem
+
+apply plugin: eclipsebuild.BuildDefinitionPlugin
+
+// define version mapping for the 3rd-party dependencies that are not specific to a particular Eclipse version
+def eclipseVersionAgnosticDependencies = [
+    'com.gradleware.tooling.utils'      : '0.10.0',
+    'com.gradleware.tooling.client'     : '0.10.0',
+    'com.gradleware.tooling.model'      : '0.10.0',
+    'org.gradle.toolingapi'             : '2.11.0',
+    'org.slf4j.api'                     : '1.7.2',
+    'org.slf4j.simple'                  : '1.7.2',
+    'com.google.guava'                  : '15.0.0',
+    'com.google.gson'                   : '2.2.4',
+    'org.junit'                         : '4.11.0',
+    'org.apache.log4j'                  : '1.2.15',
+    'org.eclipse.swtbot.eclipse.finder' : '2.2.1',
+    'org.eclipse.swtbot.junit4_x'       : '2.2.1',
+]
+
+// target platform definition for all major Eclipse releases between version 3.6 and 4.5
+// the default version is 44 which can be overridden through -Peclipse.version=<version>
+// also the target platforms contain 1) the Eclipse SDK 2) the latest junit 3) SWTBot 2.2.1
+eclipseBuild {
+    defaultEclipseVersion = '45'
+
+    final def swtPluginId = "org.eclipse.swt.${ECLIPSE_WS}.${ECLIPSE_OS}.${ECLIPSE_ARCH}"
+
+    targetPlatform {
+        eclipseVersion = '36'
+        targetDefinition = file('tooling-e36.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.4.200',
+            'org.eclipse.core.runtime'              : '3.6.0',
+            'org.eclipse.core.resources'            : '3.6.1',
+            'org.eclipse.core.variables'            : '3.2.400',
+            'org.eclipse.core.filesystem'           : '1.3.1',
+            'org.eclipse.core.net'                  : '1.2.100',
+            'org.eclipse.jdt.core'                  : '3.6.2',
+            'org.eclipse.jdt.junit.core'            : '3.6.1',
+            'org.eclipse.jdt.launching'             : '3.5.200',
+            'org.eclipse.debug.core'                : '3.6.0',
+            'org.eclipse.core.databinding'          : '1.3.100',
+            'org.eclipse.core.databinding.beans'    : '1.2.100',
+            'org.eclipse.core.databinding.property' : '1.3.0',
+            'org.eclipse.help'                      : '3.5.0',
+            'org.eclipse.ui'                        : '3.6.2',
+            'org.eclipse.ui.ide'                    : '3.6.2',
+            'org.eclipse.ui.console'                : '3.5.0',
+            'org.eclipse.ui.editors'                : '3.6.1',
+            'org.eclipse.ui.views'                  : '3.5.1',
+            'org.eclipse.debug.ui'                  : '3.6.3',
+            'org.eclipse.jdt.ui'                    : '3.6.2',
+            'com.ibm.icu'                           : '4.2.1',
+            'org.eclipse.jface.databinding'         : '1.4.0',
+            'org.eclipse.jface.text'                : '3.6.1',
+            "$swtPluginId"                          : '3.6.2'
+        ] + eclipseVersionAgnosticDependencies
+    }
+
+    targetPlatform {
+        eclipseVersion = '37'
+        targetDefinition = file('tooling-e37.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.4.300',
+            'org.eclipse.core.runtime'              : '3.7.0',
+            'org.eclipse.core.resources'            : '3.7.101',
+            'org.eclipse.core.variables'            : '3.2.500',
+            'org.eclipse.core.filesystem'           : '1.3.100',
+            'org.eclipse.core.net'                  : '1.2.100',
+            'org.eclipse.jdt.core'                  : '3.7.3',
+            'org.eclipse.jdt.junit.core'            : '3.7.0',
+            'org.eclipse.jdt.launching'             : '3.6.1',
+            'org.eclipse.debug.core'                : '3.7.1',
+            'org.eclipse.core.databinding'          : '1.4.0',
+            'org.eclipse.core.databinding.beans'    : '1.2.100',
+            'org.eclipse.core.databinding.property' : '1.4.0',
+            'org.eclipse.help'                      : '3.5.100',
+            'org.eclipse.ui'                        : '3.7.0',
+            'org.eclipse.ui.ide'                    : '3.7.0',
+            'org.eclipse.ui.console'                : '3.5.100',
+            'org.eclipse.ui.editors'                : '3.7.0',
+            'org.eclipse.ui.views'                  : '3.6.0',
+            'org.eclipse.debug.ui'                  : '3.7.102',
+            'org.eclipse.jdt.ui'                    : '3.7.2',
+            'com.ibm.icu'                           : '4.4.2',
+            'org.eclipse.jface.databinding'         : '1.5.0',
+            'org.eclipse.jface.text'                : '3.7.2',
+            "$swtPluginId"                          : '3.7.2'
+        ] + eclipseVersionAgnosticDependencies
+    }
+
+    targetPlatform {
+        eclipseVersion = '42'
+        targetDefinition = file('tooling-e42.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.4.401',
+            'org.eclipse.core.runtime'              : '3.8.0',
+            'org.eclipse.core.resources'            : '3.8.1',
+            'org.eclipse.core.variables'            : '3.2.600',
+            'org.eclipse.core.filesystem'           : '1.3.200',
+            'org.eclipse.core.net'                  : '1.2.200',
+            'org.eclipse.jdt.core'                  : '3.8.3',
+            'org.eclipse.jdt.junit.core'            : '3.7.100',
+            'org.eclipse.jdt.launching'             : '3.6.101',
+            'org.eclipse.debug.core'                : '3.7.100',
+            'org.eclipse.core.databinding'          : '1.4.1',
+            'org.eclipse.core.databinding.beans'    : '1.2.200',
+            'org.eclipse.core.databinding.property' : '1.4.100',
+            'org.eclipse.help'                      : '3.6.0',
+            'org.eclipse.ui'                        : '3.104.0',
+            'org.eclipse.ui.ide'                    : '3.8.2',
+            'org.eclipse.ui.console'                : '3.5.100',
+            'org.eclipse.ui.editors'                : '3.8.0',
+            'org.eclipse.ui.views'                  : '3.6.100',
+            'org.eclipse.debug.ui'                  : '3.8.2',
+            'org.eclipse.jdt.ui'                    : '3.8.2',
+            'com.ibm.icu'                           : '4.4.2',
+            'org.eclipse.jface.databinding'         : '1.6.0',
+            'org.eclipse.jface.text'                : '3.8.2',
+            "$swtPluginId"                          : '3.100.1'
+        ] + eclipseVersionAgnosticDependencies
+    }
+
+    targetPlatform {
+        eclipseVersion = '43'
+        targetDefinition = file('tooling-e43.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.4.501',
+            'org.eclipse.core.runtime'              : '3.9.100',
+            'org.eclipse.core.resources'            : '3.8.101',
+            'org.eclipse.core.variables'            : '3.2.700',
+            'org.eclipse.core.filesystem'           : '1.4.0',
+            'org.eclipse.core.net'                  : '1.2.200',
+            'org.eclipse.jdt.core'                  : '3.9.2',
+            'org.eclipse.jdt.junit.core'            : '3.7.200',
+            'org.eclipse.jdt.launching'             : '3.7.1',
+            'org.eclipse.debug.core'                : '3.8.0',
+            'org.eclipse.core.databinding'          : '1.4.1',
+            'org.eclipse.core.databinding.beans'    : '1.2.200',
+            'org.eclipse.core.databinding.property' : '1.4.200',
+            'org.eclipse.help'                      : '3.6.0',
+            'org.eclipse.ui'                        : '3.105.0',
+            'org.eclipse.ui.ide'                    : '3.9.2',
+            'org.eclipse.ui.console'                : '3.5.200',
+            'org.eclipse.ui.editors'                : '3.8.100',
+            'org.eclipse.ui.views'                  : '3.6.100',
+            'org.eclipse.debug.ui'                  : '3.9.0',
+            'org.eclipse.jdt.ui'                    : '3.9.2',
+            'com.ibm.icu'                           : '50.1.1',
+            'org.eclipse.jface.databinding'         : '1.6.200',
+            'org.eclipse.jface.text'                : '3.8.101',
+            "$swtPluginId"                          : '3.102.1'
+        ] + eclipseVersionAgnosticDependencies
+    }
+
+    targetPlatform {
+        eclipseVersion = '44'
+        targetDefinition = file('tooling-e44.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.4.600',
+            'org.eclipse.core.runtime'              : '3.10.0',
+            'org.eclipse.core.resources'            : '3.9.1',
+            'org.eclipse.core.variables'            : '3.2.800',
+            'org.eclipse.core.filesystem'           : '1.4.100',
+            'org.eclipse.core.net'                  : '1.2.200',
+            'org.eclipse.jdt.core'                  : '3.10.2',
+            'org.eclipse.jdt.junit.core'            : '3.7.300',
+            'org.eclipse.jdt.launching'             : '3.7.102',
+            'org.eclipse.debug.core'                : '3.9.1',
+            'org.eclipse.core.databinding'          : '1.4.2',
+            'org.eclipse.core.databinding.beans'    : '1.2.200',
+            'org.eclipse.core.databinding.property' : '1.4.200',
+            'org.eclipse.help'                      : '3.6.0',
+            'org.eclipse.ui'                        : '3.106.1',
+            'org.eclipse.ui.ide'                    : '3.10.2',
+            'org.eclipse.ui.console'                : '3.5.300',
+            'org.eclipse.ui.editors'                : '3.8.200',
+            'org.eclipse.ui.views'                  : '3.7.0',
+            'org.eclipse.debug.ui'                  : '3.10.2',
+            'org.eclipse.jdt.ui'                    : '3.10.2',
+            'com.ibm.icu'                           : '52.1.1',
+            'org.eclipse.jface.databinding'         : '1.6.200',
+            'org.eclipse.jface.text'                : '3.9.2',
+            "$swtPluginId"                          : '3.103.2'
+        ] + eclipseVersionAgnosticDependencies
+    }
+
+    targetPlatform {
+        eclipseVersion = '45'
+        targetDefinition = file('tooling-e45.target')
+        versionMapping = [
+            'org.eclipse.core.expressions'          : '3.5.0',
+            'org.eclipse.core.runtime'              : '3.11.0',
+            'org.eclipse.core.resources'            : '3.10.0',
+            'org.eclipse.core.variables'            : '3.2.800',
+            'org.eclipse.core.filesystem'           : '1.5.0',
+            'org.eclipse.core.net'                  : '1.2.300',
+            'org.eclipse.jdt.core'                  : '3.11.0',
+            'org.eclipse.jdt.junit.core'            : '3.7.400',
+            'org.eclipse.jdt.launching'             : '3.8.0',
+            'org.eclipse.debug.core'                : '3.10.0',
+            'org.eclipse.core.databinding'          : '1.5.0',
+            'org.eclipse.core.databinding.beans'    : '1.3.0',
+            'org.eclipse.core.databinding.property' : '1.5.0',
+            'org.eclipse.help'                      : '3.6.0',
+            'org.eclipse.ui'                        : '3.107.0',
+            'org.eclipse.ui.ide'                    : '3.11.0',
+            'org.eclipse.ui.console'                : '3.6.0',
+            'org.eclipse.ui.editors'                : '3.9.0',
+            'org.eclipse.ui.views'                  : '3.8.0',
+            'org.eclipse.debug.ui'                  : '3.11.0',
+            'org.eclipse.jdt.ui'                    : '3.11.0',
+            'org.eclipse.jface.databinding'         : '1.7.0',
+            'org.eclipse.jface.text'                : '3.10.0',
+            'com.ibm.icu'                           : '54.1.1',
+            "$swtPluginId"                          : "3.104.0"
+        ] + eclipseVersionAgnosticDependencies
+    }
+}
+
+// read the current version from an external file and add a timestamp suffix if requested by the caller
+version = getVersion(file('version.txt').text.trim())
+
+// delete the org.eclipse.core.runtime.compatibility.registry plugin from the target platform
+// it causes classpath issues when the the Spock tests are running with Groovy 2.4; only
+// contains files to provide 2.x compatibility hence it's safe to remove
+project.assembleTargetPlatform << {
+    def config = Config.on(project)
+    def registryPluginId = 'org.eclipse.core.runtime.compatibility.registry'
+
+    project.exec {
+        // redirect the external process output to the logging
+        standardOutput = new LogOutputStream(project.logger, LogLevel.INFO)
+        errorOutput = new LogOutputStream(project.logger, LogLevel.INFO)
+
+        commandLine(config.eclipseSdkExe.path,
+                '-application', 'org.eclipse.equinox.p2.director',
+                '-uninstallIU', registryPluginId,
+                '-tag', 'target-platform-2',
+                '-destination', config.nonMavenizedTargetPlatformDir.path,
+                '-profile', 'SDKProfile',
+                '-bundlepool', config.nonMavenizedTargetPlatformDir.path,
+                '-p2.os', Constants.os,
+                '-p2.ws', Constants.ws,
+                '-p2.arch', Constants.arch,
+                '-roaming',
+                '-nosplash')
+    }
+
+    def bundlesInfo = new File(config.nonMavenizedTargetPlatformDir, 'configuration/org.eclipse.equinox.simpleconfigurator/bundles.info')
+    def updatedInfo = ''
+    bundlesInfo.withReader { reader ->
+        def line
+        while (line = reader.readLine()) {
+            if (!line.contains(registryPluginId)) {
+                updatedInfo += line + '\n'
+            }
+        }
+    }
+    bundlesInfo.text = updatedInfo
+}
+
+subprojects {
+    // set the calculated version on all projects in the hierarchy
+    version = rootProject.version
+
+    // for all Eclipse versions before Mars, the built plugins must be Java 6 compatible
+    // for Mars and later Eclipse versions, the minimum execution environment is Java 7 (https://www.eclipse.org/projects/project-plan.php?planurl=/eclipse/development/plans/eclipse_project_plan_4_5.xml)
+    // try to compile with the minimum required JDK if the location is specified by the caller or if it can be derived
+    plugins.withType(eclipsebuild.BundlePlugin) {
+        sourceCompatibility = 1.6
+        targetCompatibility = Config.on(project).targetPlatform.eclipseVersion >= "45" ? 1.7 : 1.6
+
+        tasks.withType(AbstractCompile).all {
+            // enable all warnings except for different sourceCompatibility and targetCompatibility value
+            options.compilerArgs << '-Xlint:all'
+            options.compilerArgs << '-Xlint:-options'
+            options.fork = true
+
+            if (OperatingSystem.current().isMacOsX()) {
+                options.compilerArgs << '-Werror'
+                options.forkOptions.executable = "/usr/libexec/java_home -v $targetCompatibility".execute().text.trim() + "/bin/javac"
+            } else if (project.hasProperty('compiler.location')) {
+                // quotes required on TeamCity to pass property with spaces, e.g. a Windows file path
+                options.compilerArgs << '-Werror'
+                options.forkOptions.executable = project.property('compiler.location').replace('\"', '').replace('\'', '')
+            }
+        }
+    }
+
+    // use common bundled testing depenendencies for all test plugins
+    plugins.withType(eclipsebuild.TestBundlePlugin) {
+        dependencies {
+            bundled "org.spockframework:spock-core:$spockLibVersion"
+            bundled "cglib:cglib-nodep:$cglibLibVersion"
+            bundled ("com.gradleware.tooling:testing-junit:$commonsLibVersion") {
+                exclude module: "junit-dep"
+            }
+            bundled "org.slf4j:slf4j-simple:$slf4jLibVersion"
+        }
+    }
+
+    // apply Checkstyle plugin, mainly to ensure license/copyright and javadoc is present
+    apply plugin: 'checkstyle'
+
+    // share checkstyle config across all sub-projects
+    def checkstyleConfigDir = "$rootDir/gradle/config/checkstyle"
+    tasks.withType(Checkstyle).all {
+      configFile = "$checkstyleConfigDir/checkstyle.xml" as File
+      configProperties = ['checkstyleConfigDir': checkstyleConfigDir]
+      inputs.file "$checkstyleConfigDir/suppressions.xml" as File
+    }
+
+    // configure the repositories where the external dependencies can be found
+    repositories {
+        maven {
+            name = 'mavenized-target-platform'
+            url "${eclipsebuild.Config.on(project).mavenizedTargetPlatformDir}"
+        }
+
+        maven {
+            name = 'gradle-snapshots'
+            url gradleSnapshotsRepositoryUrl
+        }
+
+        maven {
+            name = 'gradle-releases'
+            url gradleReleasesRepositoryUrl
+        }
+
+        maven {
+            name = 'gradle-remote'
+            url gradleRemoteRepositoryUrl
+        }
+    }
+}
+
+gradle.buildFinished {
+    if (project.hasProperty('build.invoker') && project.property('build.invoker') == 'ci') {
+        killAllGradleDaemons()
+    }
+}
+
+// tag the HEAD of the current branch and push the new tag
+task tag << {
+    def tagVersion = file('version.txt').text.trim()
+    // create and push tag
+    exec { commandLine('./tag.sh', tagVersion) }
+}
+
+task incrementVersion << {
+    def oldVersion = file('version.txt').text.trim()
+    def newVersion = ""
+    def matcher = version =~ "^(\\d+)\\.(\\d+).(\\d+)"
+    if (matcher.find()) {
+        def serviceSegment = Integer.parseInt(matcher.group(3)) + 1
+        newVersion = matcher.group(1) + "." + matcher.group(2) + "." + serviceSegment
+        file('version.txt').text = newVersion
+    } else {
+        throw new IllegalStateException("Unparseable version: $oldVersion.")
+    }
+    exec { commandLine('./incrementVersion.sh', oldVersion, newVersion) }
+}
+
+void killAllGradleDaemons() {
+    def output = new ByteArrayOutputStream()
+    def queryString
+    if (org.gradle.internal.os.OperatingSystem.current().windows) {
+        queryString = ".*(?:-cp|-classpath).*gradle-launcher.*.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon.* ([0-9]+) +\$"
+        exec {
+            commandLine('wmic', 'process', 'get', 'processid,commandline')
+            standardOutput = output
+        }
+    } else {
+        queryString = "([0-9]+).*(?:-cp|-classpath).*gradle-launcher.*.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon.* "
+        exec {
+            commandLine('ps', 'x')
+            standardOutput = output
+        }
+    }
+
+    output.toString().readLines().each { String process ->
+        logger.debug("[PSTABLE]$process")
+        def processMatcher = process =~ queryString
+        if (processMatcher.find()) {
+            def pid = processMatcher.group(1)
+            logger.warn("Killing Gradle daemon process: pid=$pid, cmd=$process")
+            killProcess(pid)
+        }
+    }
+}
+
+void killProcess(String pid) {
+    def killOutput = new ByteArrayOutputStream()
+    def result = exec {
+        if (org.gradle.internal.os.OperatingSystem.current().windows) {
+            commandLine = ["taskkill.exe", "/F", "/T", "/PID", pid]
+        } else {
+            commandLine = ["kill", pid]
+        }
+        standardOutput = killOutput
+        errorOutput = killOutput
+        ignoreExitValue = true
+    }
+    if (result.exitValue != 0) {
+        String out = killOutput.toString()
+        if (!out.contains('No such process')) {
+            logger.warn("""Failed to kill daemon process $pid. Maybe already killed? Output: ${killOutput}""")
+        }
+    }
+}
+
+String getVersion(def baseVersion) {
+    def config = BuildshipConfig.on(project)
+
+    // determine suffix for snapshot and milestone builds
+    def suffix
+    if (config.isRelease()) {
+        suffix = ''
+    } else if (config.isMilestone()) {
+        suffix = '-m'
+    } else if (config.isSnapshot()) {
+        suffix = '-s'
+    } else {
+        throw new IllegalStateException("BuildshipConfig must either be a release, milestone, or snapshot.")
+    }
+
+    // use full timestamp on CI vs. date-only for local builds
+    if (project.hasProperty('build.invoker') && project.property('build.invoker') == 'ci') {
+        // note that for Eclipse plugin versions, the '-' and '.' character are invalid in front of the build id
+        baseVersion + '.v' + new Date().format('yyyyMMdd-kkmm', TimeZone.getTimeZone('GMT')) + suffix
+    } else {
+        baseVersion + '.v' + new Date().format('yyyyMMdd', TimeZone.getTimeZone('GMT')) + suffix
+    }
+}
