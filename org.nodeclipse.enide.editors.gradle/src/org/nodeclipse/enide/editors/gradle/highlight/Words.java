@@ -6,7 +6,7 @@ public class Words {
 		// Java keywords
         "assert",
         "if", "else",
-        "void",
+        "void", "null"
         "new", "return",
         "try", "catch", 
         
@@ -35,6 +35,10 @@ public class Words {
         "ext", 
         "plugins", //since 2.1
         //}
+        
+        // apply plugin: 'java'
+        // apply plugin: 'com.github.johnrengelman.shadow'
+        "jar", "shadowJar", 
         
         // Android plugin
 //        defaultConfig {v}	
