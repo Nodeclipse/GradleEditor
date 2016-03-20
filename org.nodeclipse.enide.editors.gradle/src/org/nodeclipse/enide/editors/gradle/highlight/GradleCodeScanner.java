@@ -90,9 +90,6 @@ public class GradleCodeScanner extends RuleBasedScanner {
             for (String word : Words.KEYWORDS) {
                 addWord(word, token);
             }
-            for (String word : Words.NODE_WORDS) {
-                addWord(word, token);
-            }
         }
     }
 

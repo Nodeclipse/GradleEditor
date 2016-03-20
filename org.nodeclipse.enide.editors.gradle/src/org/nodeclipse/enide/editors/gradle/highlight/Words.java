@@ -6,7 +6,7 @@ public class Words {
 		// Java keywords
         "assert",
         "if", "else",
-        "void", "null"
+        "void", "null",
         "new", "return",
         "try", "catch", 
         
@@ -27,7 +27,7 @@ public class Words {
         "allprojects", "artifacts", "buildscript", "configurations",
         "dependencies", "repositories", "sourceSets", "subprojects", "publishing",
         //?
-		"task", "apply", "sourceCompatibility", 
+		"task", "apply", "sourceCompatibility", "targetCompatibility",
         "test",
         "version","group", "name",
         
@@ -81,22 +81,6 @@ public class Words {
         // other plugins
         "robolectric",
 
-    };
-
-    public static final String[] RESERVEDWORDS = { "let", "yield",//
-            "abstract", "enum", "int", "short",//
-            "boolean", "export", "interface", "static",//
-            "byte", "extends", "long", "super",//
-            "char", "final", "native", "synchronized",//
-            "class", "float", "package", "throws",//
-            "const", "goto", "private", "transient",//
-            "debugger", "implements", "protected", "volatile",//
-            "double", "import", "public",//
-            
-    };
-
-    public static final String[] NODE_WORDS = new String[] { "require", "__filename",//
-            "__dirname", "module", "exports", "setInterval"//
     };
 
 }
