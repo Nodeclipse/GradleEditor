@@ -22,14 +22,15 @@ Now you have version from source running in your IDE.
 
 ## Intro
 
-Gradleware works for Gradle tools in Eclipse within Eclipse Buildship project.
+Gradleware works on Gradle tools for Eclipse IDE within Eclipse Buildship project.
 And of course have plans for full pledged Editor 
 (see [story](https://github.com/eclipse/buildship/blob/master/docs/stories/Editor.md))
 but it is not in nearest future (please let use know via raised issue #2 when you see it on Roadmap)
 
-The goal is to give Editor that would work within any Eclipse project, 
+The goal of this project is to give Editor that would work within any Eclipse project, 
 with or without Pivotal Gradle IDE or Eclipse Buildship integrations.
-This Editor will take no Gradle APIs or Groovy dependency and stay as light as possible.
+Initial idea is that this Editor will take no Gradle APIs or Groovy dependency and stay as light as possible,
+but other ideas are welcomed, just open an issue or PR.
 
 ## Screenshots
 
