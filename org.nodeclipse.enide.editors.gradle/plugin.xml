@@ -13,6 +13,15 @@
             id="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
             name="Minimalist Gradle Editor">
       </editor>
+      <editor
+            class="org.nodeclipse.enide.editors.gradle.editors.GradleEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"            
+            extensions="groovy"
+            default="false"
+            icon="icons/gradle-icon-16x16.png"
+            id="org.nodeclipse.enide.editors.gradle.editors.GroovyAsGradleEditor"
+            name="Groovy as Gradle Editor (Nodeclipse)">
+      </editor>
    </extension>
    
    
